@@ -131,7 +131,7 @@ def detect(save_img=False):
                         #print("type(xyxy)=",type(xyxy))
                         #print("type(xyxy[0])=",type(xyxy[0]))
                         for i in range(len(xyxy)):
-                            xyxy[i]=xyxy[i].numpy()
+                            xyxy[i]=xyxy[i].cpu().numpy()
                         xyxy_np=np.array(xyxy)
                         print("type(xyxy_np[0][0])=",type(xyxy_np[0][0]))
                         print("type(xyxy_np)=",type(xyxy_np))
