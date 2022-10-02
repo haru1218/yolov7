@@ -116,7 +116,7 @@ def detect(save_img=False):
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
                 # Write results
-                #xyxy_data=np.empty(4,dtype=np.int)
+                #xyxy_frame=np.empty(4,dtype=np.int)
                 num=0
                 for *xyxy, conf, cls in reversed(det):
                     
@@ -141,18 +141,18 @@ def detect(save_img=False):
                         #print("xyxy_np.shape=",xyxy_np.shape)
                         print("xyxy_np=",xyxy_np)
                         if num==0:                            
-                            xyxy_data=xyxy_np
+                            xyxy_frame=xyxy_np
                         else:
-                            np.concatenate([xyxy_data, xyxy_np], 0)
+                            xyxy_frame=np.concatenate([xyxy_frame, xyxy_np], 0)
                         num=num+1
                         
                         
             # Print time (inference + NMS)
             print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
             
-            #print xyxy_data
-            print("xyxy_data=",xyxy_data)
-            print("xyxy_data.shape=",xyxy_data.shape)
+            #print xyxy_frame
+            print("xyxy_frame=",xyxy_frame)
+            print("xyxy_frame.shape=",xyxy_frame.shape)
             
             
            
