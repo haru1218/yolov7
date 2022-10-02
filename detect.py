@@ -116,8 +116,10 @@ def detect(save_img=False):
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
                 # Write results
-                xyxy_data=np.empty(4,dtype=np.int)
+                #xyxy_data=np.empty(4,dtype=np.int)
+                num=0
                 for *xyxy, conf, cls in reversed(det):
+                    
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         line = (cls, *xywh, conf) if opt.save_conf else (cls, *xywh)  # label format
@@ -137,7 +139,11 @@ def detect(save_img=False):
                         #print("type(xyxy_np[0][0])=",type(xyxy_np[0][0]))
                         #print("type(xyxy_np)=",type(xyxy_np))
                         print("xyxy_np.shape=",xyxy_np.shape)
-                        np.concatenate([xyxy_data, xyxy_np], 0)
+                        if num==0:                            
+                            xyxy_data=xyxy_np
+                        else:
+                            np.concatenate([xyxy_data, xyxy_np], 0)
+                    num=num+=1
                         
                         
             # Print time (inference + NMS)
