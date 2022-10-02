@@ -133,7 +133,7 @@ def detect(save_img=False):
                         for i in range(len(xyxy)):
                             xyxy[i]=xyxy[i].cpu().numpy()
                         xyxy_np=np.array(xyxy)
-                        print("type(xyxy_np[0][0])=",type(xyxy_np[0][0]))
+                        #print("type(xyxy_np[0][0])=",type(xyxy_np[0][0]))
                         print("type(xyxy_np)=",type(xyxy_np))
                         
                         
