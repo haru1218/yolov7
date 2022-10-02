@@ -130,7 +130,8 @@ def detect(save_img=False):
                         print("bbox[0]=",xyxy[0])
                         print("type(xyxy)=",type(xyxy))
                         print("type(xyxy[0])=",type(xyxy[0]))
-                        
+                        xyxy_np=xyxy.numpy()
+                        print("type(xyxy_np)=",type(xyxy_np))
                         
                         
             # Print time (inference + NMS)
