@@ -130,7 +130,7 @@ def detect(save_img=False):
                         #print("bbox[0]=",xyxy[0])
                         #print("type(xyxy)=",type(xyxy))
                         #print("type(xyxy[0])=",type(xyxy[0]))
-                        for i in len(xyxy):
+                        for i in range(len(xyxy)):
                             xyxy[i]=xyxy[i].numpy()
                         xyxy_np=np.array(xyxy)
                         print("type(xyxy_np[0][0])=",type(xyxy_np[0][0]))
