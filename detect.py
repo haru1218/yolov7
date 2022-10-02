@@ -143,6 +143,10 @@ def detect(save_img=False):
             # Print time (inference + NMS)
             print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
             
+            #print xyxy_data
+            print("xyxy_data=",xyxy_data)
+            print("xyxy_data.shape=",xyxy_data.shape)
+            
             
            
             # Stream results
