@@ -127,10 +127,13 @@ def detect(save_img=False):
                         label = f'{names[int(cls)]} {conf:.2f}'
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=1)
                         
-                        print("bbox[0]=",xyxy[0])
-                        print("type(xyxy)=",type(xyxy))
-                        print("type(xyxy[0])=",type(xyxy[0]))
-                        xyxy_np=xyxy.numpy()
+                        #print("bbox[0]=",xyxy[0])
+                        #print("type(xyxy)=",type(xyxy))
+                        #print("type(xyxy[0])=",type(xyxy[0]))
+                        for i in len(xyxy):
+                            xyxy[i]=xyxy[i].numpy()
+                        xyxy_np=np.array(xyxy)
+                        print("type(xyxy_np[0][0])=",type(xyxy_np[0][0]))
                         print("type(xyxy_np)=",type(xyxy_np))
                         
                         
