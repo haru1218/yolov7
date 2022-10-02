@@ -135,7 +135,7 @@ def detect(save_img=False):
                         xyxy_np=np.array(xyxy)
                         #print("type(xyxy_np[0][0])=",type(xyxy_np[0][0]))
                         #print("type(xyxy_np)=",type(xyxy_np))
-                        print("xyxy_np.shape()=",xyxy_np.shape())
+                        print("xyxy_np.shape=",xyxy_np.shape)
                         
                         
             # Print time (inference + NMS)
