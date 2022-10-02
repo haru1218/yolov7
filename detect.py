@@ -153,9 +153,14 @@ def detect(save_img=False):
             #print xyxy_frame
             print("xyxy_frame=",xyxy_frame)
             print("xyxy_frame.shape=",xyxy_frame.shape)
-            
-            
-           
+            '''
+            if frame_num==0:
+                xyxy_csv=xyxy_frame
+                           
+            else:          
+                xyxy_csv=np.concatenate([xyxy_csv, xyxy_frame], 1)
+                frame_num=frame_num+1
+           '''
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
