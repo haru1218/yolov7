@@ -147,9 +147,9 @@ def detect(save_img=False):
             print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
             
             #print xyxy_frame
-            #print("xyxy_frame=",xyxy_frame)
+            print("xyxy_frame=",xyxy_frame)
             #print("xyxy_frame.shape=",xyxy_frame.shape)
-            
+            print(i)
             np.savetxt('xyxy_frame{0}.csv'.format(i), xyxy_frame, delimiter=',', fmt='%d')
             
             # Stream results
