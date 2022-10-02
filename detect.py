@@ -135,7 +135,7 @@ def detect(save_img=False):
                             xyxy[k]=xyxy[k].cpu().numpy()
                         xyxy_np=np.array(xyxy)
                         
-                        print("xyxy_np=",xyxy_np)
+                        #print("xyxy_np=",xyxy_np)
                         if num==0:                            
                             xyxy_frame=np.array(xyxy_np)
                         else:
@@ -147,10 +147,10 @@ def detect(save_img=False):
             print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
             
             #print xyxy_frame
-            print("xyxy_frame=",xyxy_frame)
-            print("xyxy_frame.shape=",xyxy_frame.shape)
+            #print("xyxy_frame=",xyxy_frame)
+            #print("xyxy_frame.shape=",xyxy_frame.shape)
             
-            np.savetxt('./xyxy_frame{0}.csv'.format(i), xyxy_frame, delimiter=',', fmt='%d')
+            np.savetxt('xyxy_frame{0}.csv'.format(i), xyxy_frame, delimiter=',', fmt='%d')
             
             # Stream results
             if view_img:
