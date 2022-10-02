@@ -96,6 +96,7 @@ def detect(save_img=False):
             pred = apply_classifier(pred, modelc, img, im0s)
 
         # Process detections
+        j=0
         for i, det in enumerate(pred):  # detections per image
             if webcam:  # batch_size >= 1
                 p, s, im0, frame = path[i], '%g: ' % i, im0s[i].copy(), dataset.count
@@ -149,9 +150,9 @@ def detect(save_img=False):
             #print xyxy_frame
             print("xyxy_frame=",xyxy_frame)
             #print("xyxy_frame.shape=",xyxy_frame.shape)
-            print(i)
-            np.savetxt('xyxy_frame{0}.csv'.format(i), xyxy_frame, delimiter=',', fmt='%d')
-            
+            print(j)
+            np.savetxt('xyxy_frame{0}.csv'.format(j), xyxy_frame, delimiter=',', fmt='%d')
+            j+=1
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
