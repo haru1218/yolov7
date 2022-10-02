@@ -130,15 +130,11 @@ def detect(save_img=False):
                         label = f'{names[int(cls)]} {conf:.2f}'
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)], line_thickness=1)
                         
-                        #print("bbox[0]=",xyxy[0])
-                        #print("type(xyxy)=",type(xyxy))
-                        #print("type(xyxy[0])=",type(xyxy[0]))
-                        for i in range(len(xyxy)):
-                            xyxy[i]=xyxy[i].cpu().numpy()
+                        
+                        for k in range(len(xyxy)):
+                            xyxy[k]=xyxy[k].cpu().numpy()
                         xyxy_np=np.array(xyxy)
-                        #print("type(xyxy_np[0][0])=",type(xyxy_np[0][0]))
-                        #print("type(xyxy_np)=",type(xyxy_np))
-                        #print("xyxy_np.shape=",xyxy_np.shape)
+                        
                         print("xyxy_np=",xyxy_np)
                         if num==0:                            
                             xyxy_frame=np.array(xyxy_np)
@@ -153,14 +149,9 @@ def detect(save_img=False):
             #print xyxy_frame
             print("xyxy_frame=",xyxy_frame)
             print("xyxy_frame.shape=",xyxy_frame.shape)
-            '''
-            if frame_num==0:
-                xyxy_csv=xyxy_frame
-                           
-            else:          
-                xyxy_csv=np.concatenate([xyxy_csv, xyxy_frame], 1)
-                frame_num=frame_num+1
-           '''
+            
+            np.savetxt('./xyxy_frame{0}.txt'.format(i), xyxy_frame)
+            
             # Stream results
             if view_img:
                 cv2.imshow(str(p), im0)
