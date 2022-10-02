@@ -143,7 +143,7 @@ def detect(save_img=False):
                         if num==0:                            
                             xyxy_frame=np.array(xyxy_np)
                         else:
-                            xyxy_frame=np.concatenate([xyxy_frame, xyxy_np], 1)
+                            xyxy_frame=np.concatenate([xyxy_frame, xyxy_np], 0)
                         num=num+1
                         
                         
