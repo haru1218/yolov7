@@ -150,7 +150,7 @@ def detect(save_img=False):
             print("xyxy_frame=",xyxy_frame)
             print("xyxy_frame.shape=",xyxy_frame.shape)
             
-            np.savetxt('./xyxy_frame{0}.txt'.format(i), xyxy_frame)
+            np.savetxt('./xyxy_frame{0}.csv'.format(i), xyxy_frame, delimiter=',', fmt='%d')
             
             # Stream results
             if view_img:
