@@ -144,7 +144,7 @@ def detect(save_img=False):
                             xyxy_data=xyxy_np
                         else:
                             np.concatenate([xyxy_data, xyxy_np], 0)
-                    num=num+1
+                        num=num+1
                         
                         
             # Print time (inference + NMS)
