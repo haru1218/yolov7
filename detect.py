@@ -68,6 +68,7 @@ def detect(save_img=False):
 
     t0 = time.time()
     j=0
+    detection_num_list=[]
     for path, img, im0s, vid_cap in dataset:
         img = torch.from_numpy(img).to(device)
         img = img.half() if half else img.float()  # uint8 to fp16/32
@@ -154,9 +155,9 @@ def detect(save_img=False):
             print(j)
             #np.savetxt('xyxy_frame{0}.csv'.format(j), xyxy_frame, delimiter=',', fmt='%d')
             if j==0:                            
-                xyxy_video=np.array([xyxy_frame])
+                xyxy_video=xyxy_frame
             else:
-                xyxy_video=np.vstack((xyxy_video, [xyxy_frame]))
+                xyxy_video=np.vstack((xyxy_video, xyxy_frame))
             
             j+=1
             # Stream results
@@ -184,7 +185,15 @@ def detect(save_img=False):
                         vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                     vid_writer.write(im0)
     print("source=",source)
-    np.savetxt('xyxy_video{0}.csv'.format(""), xyxy_video, delimiter=',', fmt='%d')    
+    np.savetxt('xyxy_video{0}.csv'.format(""), xyxy_video, delimiter=',', fmt='%d')
+    detection_num_list.append(j)
+    #detectionの個数をｃｓｖ書き出し---------
+    import csv
+    f = open('out.csv', 'w')
+    writer = csv.writer(f)
+    writer.writerow(detection_num_list)
+    f.close()
+    #----------------------------------
     if save_txt or save_img:
         s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
         #print(f"Results saved to {save_dir}{s}")
