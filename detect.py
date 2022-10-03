@@ -191,7 +191,7 @@ def detect(save_img=False):
     
     #detectionの個数をｃｓｖ書き出し---------
     import csv
-    f = open('out.csv_{0}'.format(source[start+1:end]), 'w')
+    f = open('out_{0}.csv'.format(source[start+1:end]), 'w')
     writer = csv.writer(f)
     writer.writerow(detection_num_list)
     f.close()
