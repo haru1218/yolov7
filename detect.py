@@ -144,7 +144,7 @@ def detect(save_img=False):
                         else:
                             xyxy_frame=np.vstack([xyxy_frame, xyxy_np])
                         num=num+1
-                        
+                detection_num_list.append(num)        
                         
             # Print time (inference + NMS)
             print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
@@ -186,7 +186,7 @@ def detect(save_img=False):
                     vid_writer.write(im0)
     print("source=",source)
     np.savetxt('xyxy_video{0}.csv'.format(""), xyxy_video, delimiter=',', fmt='%d')
-    detection_num_list.append(j)
+    
     #detectionの個数をｃｓｖ書き出し---------
     import csv
     f = open('out.csv', 'w')
