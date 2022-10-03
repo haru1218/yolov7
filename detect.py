@@ -187,11 +187,11 @@ def detect(save_img=False):
     print("source=",source)
     start=source.rfind('/')
     end=source.rfind('.')
-    np.savetxt('xyxy_video{0}.csv'.format(source[start+1:end]), xyxy_video, delimiter=',', fmt='%d')
+    np.savetxt('xyxy_video_{0}.csv'.format(source[start+1:end]), xyxy_video, delimiter=',', fmt='%d')
     
     #detectionの個数をｃｓｖ書き出し---------
     import csv
-    f = open('out.csv{0}'.format(source[start+1:end]), 'w')
+    f = open('out.csv_{0}'.format(source[start+1:end]), 'w')
     writer = csv.writer(f)
     writer.writerow(detection_num_list)
     f.close()
