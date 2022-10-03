@@ -185,11 +185,13 @@ def detect(save_img=False):
                         vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                     vid_writer.write(im0)
     print("source=",source)
-    np.savetxt('xyxy_video{0}.csv'.format(""), xyxy_video, delimiter=',', fmt='%d')
+    start=source.rfind('/')
+    end=source.rfind('.')
+    np.savetxt('xyxy_video{0}.csv'.format(source[start+1:end]), xyxy_video, delimiter=',', fmt='%d')
     
     #detectionの個数をｃｓｖ書き出し---------
     import csv
-    f = open('out.csv', 'w')
+    f = open('out.csv{0}',.format(source[start+1:end]) 'w')
     writer = csv.writer(f)
     writer.writerow(detection_num_list)
     f.close()
