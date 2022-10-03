@@ -149,10 +149,15 @@ def detect(save_img=False):
             print(f'{s}Done. ({(1E3 * (t2 - t1)):.1f}ms) Inference, ({(1E3 * (t3 - t2)):.1f}ms) NMS')
             
             #print xyxy_frame
-            print("xyxy_frame=",xyxy_frame)
+            #print("xyxy_frame=",xyxy_frame)
             #print("xyxy_frame.shape=",xyxy_frame.shape)
             print(j)
-            np.savetxt('xyxy_frame{0}.csv'.format(j), xyxy_frame, delimiter=',', fmt='%d')
+            #np.savetxt('xyxy_frame{0}.csv'.format(j), xyxy_frame, delimiter=',', fmt='%d')
+            if j==0:                            
+                xyxy_video=np.array([xyxy_frame])
+            else:
+                xyxy_video=np.vstack((xyxy_video, [xyxy_frame]))
+            
             j+=1
             # Stream results
             if view_img:
@@ -178,7 +183,8 @@ def detect(save_img=False):
                             save_path += '.mp4'
                         vid_writer = cv2.VideoWriter(save_path, cv2.VideoWriter_fourcc(*'mp4v'), fps, (w, h))
                     vid_writer.write(im0)
-
+    print("source=",source)
+    np.savetxt('xyxy_video{0}.csv'.format(""), xyxy_video, delimiter=',', fmt='%d')    
     if save_txt or save_img:
         s = f"\n{len(list(save_dir.glob('labels/*.txt')))} labels saved to {save_dir / 'labels'}" if save_txt else ''
         #print(f"Results saved to {save_dir}{s}")
